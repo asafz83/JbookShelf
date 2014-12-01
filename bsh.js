@@ -25,9 +25,19 @@ $(document).ready(function(){
      var editSpan = $("<div>");
     editSpan.html("Edit");
     editSpan.on("click", function(){
-      $("#" + newBook.id + " div:nth(0)").html("<input type='text' />");
-      $("#" + newBook.id + " div:nth(1)").html("<input type='text' />");
-      $("#" + newBook.id + " div:nth(2)").html("<input type='text' />");
+      var input1 = $("<input>");
+      input1.attr("type", "text");
+      input1.val($("#" + newBook.id + " div:nth(0)").html());
+      var input2 = $("<input>");
+      input2.attr("type", "text");
+      input2.val($("#" + newBook.id + " div:nth(1)").html());
+      var input3 = $("<input>");
+      input3.attr("type", "text");
+      input3.val($("#" + newBook.id + " div:nth(2)").html());
+      
+      $("#" + newBook.id + " div:nth(0)").html(input1);
+      $("#" + newBook.id + " div:nth(1)").html(input2);
+      $("#" + newBook.id + " div:nth(2)").html(input3);
     });
     newLi.append(nameSpan).append(authorSpan).append(scoreSpan).append(xSpan).append(editSpan);
     $("ul").append(newLi);
