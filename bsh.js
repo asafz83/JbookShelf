@@ -25,7 +25,7 @@ $(document).ready(function(){
      var editSpan = $("<div>");
     editSpan.html("Edit");
     editSpan.on("click", function(){
-      if (editSpan.html() === "Edit") {
+      if ($(this).html() === "Edit") {
         var input1 = $("<input>");
       input1.attr("type", "text");
       input1.val($("#" + newBook.id + " div:nth(0)").html());
