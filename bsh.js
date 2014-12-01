@@ -29,7 +29,7 @@ $(document).ready(function(){
       $("#" + newBook.id + " div:nth(1)").html("<input type='text' />");
       $("#" + newBook.id + " div:nth(2)").html("<input type='text' />");
     });
-    newLi.append(nameSpan).append(authorSpan).append(scoreSpan).append(xSpan);
+    newLi.append(nameSpan).append(authorSpan).append(scoreSpan).append(xSpan).append(editSpan);
     $("ul").append(newLi);
     books.push(newBook);
   });
