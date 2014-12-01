@@ -22,6 +22,13 @@ $(document).ready(function(){
     xSpan.on("click", function(){
       $("#" + newBook.id).remove();
     });
+     var editSpan = $("<div>");
+    editSpan.html("Edit");
+    editSpan.on("click", function(){
+      $("#" + newBook.id + " div:nth(0)").html("<input type='text' />");
+      $("#" + newBook.id + " div:nth(1)").html("<input type='text' />");
+      $("#" + newBook.id + " div:nth(2)").html("<input type='text' />");
+    });
     newLi.append(nameSpan).append(authorSpan).append(scoreSpan).append(xSpan);
     $("ul").append(newLi);
     books.push(newBook);
