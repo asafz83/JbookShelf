@@ -25,7 +25,8 @@ $(document).ready(function(){
      var editSpan = $("<div>");
     editSpan.html("Edit");
     editSpan.on("click", function(){
-      var input1 = $("<input>");
+      if (editSpan.html() === "Edit") {
+        var input1 = $("<input>");
       input1.attr("type", "text");
       input1.val($("#" + newBook.id + " div:nth(0)").html());
       var input2 = $("<input>");
@@ -38,6 +39,11 @@ $(document).ready(function(){
       $("#" + newBook.id + " div:nth(0)").html(input1);
       $("#" + newBook.id + " div:nth(1)").html(input2);
       $("#" + newBook.id + " div:nth(2)").html(input3);
+      $(this).html("Save");
+      } else {
+        $(this).html("Edit");
+      }
+      
     });
     newLi.append(nameSpan).append(authorSpan).append(scoreSpan).append(xSpan).append(editSpan);
     $("ul").append(newLi);
