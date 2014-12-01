@@ -41,6 +41,12 @@ $(document).ready(function(){
       $("#" + newBook.id + " div:nth(2)").html(input3);
       $(this).html("Save");
       } else {
+        var bookName = $("#" + newBook.id + " div:nth(0) input").val();
+        var authorName = $("#" + newBook.id + " div:nth(1) input").val();
+        var score = $("#" + newBook.id + " div:nth(2) input").val();
+        $("#" + newBook.id + " div:nth(0)").html(bookName);
+        $("#" + newBook.id + " div:nth(1)").html(authorName);
+        $("#" + newBook.id + " div:nth(2)").html(score);
         $(this).html("Edit");
       }
       
