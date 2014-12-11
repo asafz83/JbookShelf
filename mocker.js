@@ -2,7 +2,7 @@
 $.mockjax({
   // matches /author/{any number here}/isbn/{any number with dashes here}
   // for example: "/author/1234/isbn/1234-5678-9012-0"
-  url: /^\/books\/update\/book_([\d]+)$/,
+  url: /^\/books\/remove\/book_([\d]+)$/,
   // names of matching params
   urlParams: ["bookId"],
   response: function (settings) {
@@ -23,6 +23,28 @@ $.mockjax({
     else {
     	this.responseText = {"removed": "0"};
     }
+    
+  }
+});
+
+$.mockjax({
+  // matches /author/{any number here}/isbn/{any number with dashes here}
+  // for example: "/author/1234/isbn/1234-5678-9012-0"
+  url: /^\/books\/update\/book_([\d]+)$/,
+  // names of matching params
+  urlParams: ["bookId"],
+  response: function (settings) {
+    var bookId = settings.urlParams.bookId;
+    var a = localStorage.getItem("refael");
+    booksArray = JSON.parse(a);
+    updated = 0;
+    for (var i=0;i<booksArray.length;i++) {
+    	if (booksArray[i].id === "book_" + bookId) {
+    		updated = 1;booksArray[i] = settings.data;break;
+    	}
+    }
+    localStorage.setItem("refael", JSON.stringify(booksArray));
+    this.responseText = {"updated": updated};
     
   }
 });
