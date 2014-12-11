@@ -18,6 +18,9 @@ $.mockjax({
 		      var book = settings.data;
 		      var a = localStorage.getItem("refael");
 		      booksArray = JSON.parse(a);
+		      if (!booksArray) {
+		      	booksArray = [];
+		      }
 		      booksArray.push(book);
 		      localStorage.setItem("refael", JSON.stringify(booksArray));
 		      this.responseText = {"status": "200"};
