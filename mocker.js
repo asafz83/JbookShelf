@@ -7,7 +7,7 @@ $.mockjax({
           	} else {
           		var a = localStorage.getItem("refael");
           		booksArray = JSON.parse(a);
-            	this.responseText = {"data": booksArray};	
+            	this.responseText = booksArray;	
           	}
 			  }
 			});
