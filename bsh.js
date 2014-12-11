@@ -21,13 +21,6 @@ function addBookToDom(newBook) {
     xSpan.html("X");
     xSpan.on("click", function(){
       $("#" + newBook.id).remove();
-      $.ajax({
-        url: "/books/update/" + newBook.id,
-        type: 'DELETE',
-        success: function(data){
-          alert("removed: " + data.removed);
-      }
-      });
       
       //todo send DELETE with newBook.id as url parameter to the url /books/remove/<put newBook.id here>
     });
@@ -53,10 +46,25 @@ function addBookToDom(newBook) {
         var bookName = $("#" + newBook.id + " div:nth(0) input").val();
         var authorName = $("#" + newBook.id + " div:nth(1) input").val();
         var score = $("#" + newBook.id + " div:nth(2) input").val();
+        
         $("#" + newBook.id + " div:nth(0)").html(bookName);
         $("#" + newBook.id + " div:nth(1)").html(authorName);
         $("#" + newBook.id + " div:nth(2)").html(score);
         $(this).html("Edit");
+        var obj = {
+          id: newBook.id,
+          bookName: bookName,
+          authorName: authorName,
+          score: score
+        }
+        $.ajax({
+        url: "/books/update/" + newBook.id,
+        type: 'PUT',
+        data: obj
+        success: function(data){
+          alert("updated: " + data.updated);
+      }
+      });
         //todo send POST with newBook.id as url parameter and the updated Book as data object to the url /books/udpate/<put newBook.id here>
       }
 });
