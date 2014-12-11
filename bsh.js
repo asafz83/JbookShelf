@@ -3,19 +3,12 @@ var books = [];
 
 $.get("/books", function(data){
   console.log(data);
+  for (var i=0;i<data.length;i++) {
+    addBookToDom(data[i]);
+  }
 });
 
-
-
-
-$(document).ready(function(){
-  $(".addBookForm button").on("click", function(){
-    var newBook = {};
-    newBook.bookName = $(".addBookForm input:nth(0)").val();
-    newBook.authorName = $(".addBookForm input:nth(1)").val();
-    newBook.score = $(".addBookForm input:nth(2)").val();
-    newBook.id = "book_" + new Date().getTime();
-    //console.log(newBook);
+function addBookToDom(newBook){
     var newLi = $("<li>");
     newLi.attr("id", newBook.id);
     var nameSpan = $("<div>");
@@ -31,9 +24,6 @@ $(document).ready(function(){
     });
      var editSpan = $("<div>");
     editSpan.html("Edit");
-    $.post("/books/new", newBook, function(){
-      alert("save successfully");
-    });
     editSpan.on("click", function(){
       if ($(this).html() === "Edit") {
         var input1 = $("<input>");
@@ -59,6 +49,25 @@ $(document).ready(function(){
         $("#" + newBook.id + " div:nth(2)").html(score);
         $(this).html("Edit");
       }
+}
+
+
+
+
+$(document).ready(function(){
+  $(".addBookForm button").on("click", function(){
+    var newBook = {};
+    newBook.bookName = $(".addBookForm input:nth(0)").val();
+    newBook.authorName = $(".addBookForm input:nth(1)").val();
+    newBook.score = $(".addBookForm input:nth(2)").val();
+    newBook.id = "book_" + new Date().getTime();
+    //console.log(newBook);
+    
+    $.post("/books/new", newBook, function(){
+      alert("save successfully");
+      addBookToDom(newBook);
+    });
+    
       
     });
     newLi.append(nameSpan).append(authorSpan).append(scoreSpan).append(xSpan).append(editSpan);
