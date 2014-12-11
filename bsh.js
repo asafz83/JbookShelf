@@ -21,6 +21,7 @@ function addBookToDom(newBook) {
     xSpan.html("X");
     xSpan.on("click", function(){
       $("#" + newBook.id).remove();
+      //todo send DELETE with newBook.id as url parameter to the url /books/remove/<put newBook.id here>
     });
      var editSpan = $("<div>");
     editSpan.html("Edit");
@@ -48,6 +49,7 @@ function addBookToDom(newBook) {
         $("#" + newBook.id + " div:nth(1)").html(authorName);
         $("#" + newBook.id + " div:nth(2)").html(score);
         $(this).html("Edit");
+        //todo send POST with newBook.id as url parameter and the updated Book as data object to the url /books/udpate/<put newBook.id here>
       }
 });
   newLi.append(nameSpan).append(authorSpan).append(scoreSpan).append(xSpan).append(editSpan);
