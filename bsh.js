@@ -1,6 +1,6 @@
 var books = [];
 
-addAllBooks(books) {
+var addAllBooks = function(books) {
   for (var i=0;i<books.length;i++) {
     var newLi = $("<li>");
     newLi.attr("id", books[i].id);
