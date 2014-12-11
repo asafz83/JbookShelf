@@ -51,20 +51,12 @@ function addBookToDom(newBook) {
         $("#" + newBook.id + " div:nth(1)").html(authorName);
         $("#" + newBook.id + " div:nth(2)").html(score);
         $(this).html("Edit");
-        var obj = {
+        var bookToSendInAjax = {
           id: newBook.id,
           bookName: bookName,
           authorName: authorName,
           score: score
         }
-        $.ajax({
-        url: "/books/update/" + newBook.id,
-        type: 'PUT',
-        data: obj,
-        success: function(data){
-          alert("updated: " + data.updated);
-      }
-      });
         //todo send POST with newBook.id as url parameter and the updated Book as data object to the url /books/udpate/<put newBook.id here>
       }
 });
