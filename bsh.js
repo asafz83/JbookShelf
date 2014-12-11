@@ -22,7 +22,7 @@ function addBookToDom(newBook) {
     xSpan.on("click", function(){
       $("#" + newBook.id).remove();
       $.ajax({
-        url: '"/books/update/" + newBook.id',
+        url: "/books/update/" + newBook.id,
         type: 'DELETE',
         success: function(data){
           alert("removed: " + data.removed);
