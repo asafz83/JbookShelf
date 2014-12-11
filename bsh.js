@@ -21,6 +21,9 @@ function addBookToDom(newBook) {
     xSpan.html("X");
     xSpan.on("click", function(){
       $("#" + newBook.id).remove();
+      $.delete("/books/update/" + newBook.id, {}, function(data){
+        alert("remove: " + data.removed);
+      })
       //todo send DELETE with newBook.id as url parameter to the url /books/remove/<put newBook.id here>
     });
      var editSpan = $("<div>");
