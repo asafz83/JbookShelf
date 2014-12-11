@@ -60,7 +60,7 @@ function addBookToDom(newBook) {
         $.ajax({
         url: "/books/update/" + newBook.id,
         type: 'PUT',
-        data: obj
+        data: obj,
         success: function(data){
           alert("updated: " + data.updated);
       }
