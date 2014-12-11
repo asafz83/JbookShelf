@@ -50,6 +50,9 @@ function addBookToDom(newBook) {
         $(this).html("Edit");
       }
 });
+  newLi.append(nameSpan).append(authorSpan).append(scoreSpan).append(xSpan).append(editSpan);
+    $("ul").append(newLi);
+    books.push(newBook);
 }
 
 
@@ -71,8 +74,6 @@ $(document).ready(function(){
     
       
     });
-    newLi.append(nameSpan).append(authorSpan).append(scoreSpan).append(xSpan).append(editSpan);
-    $("ul").append(newLi);
-    books.push(newBook);
+    
   });
 
