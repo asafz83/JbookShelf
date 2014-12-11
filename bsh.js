@@ -1,57 +1,6 @@
 var books = [];
 
-var addAllBooks = function(books) {
-  for (var i=0;i<books.length;i++) {
-    var newLi = $("<li>");
-    newLi.attr("id", books[i].id);
-    var nameSpan = $("<div>");
-    nameSpan.html(books[i].bookName);
-    var authorSpan = $("<div>");
-    authorSpan.html(books[i].authorName);
-    var scoreSpan = $("<div>");
-    scoreSpan.html(books[i].score);
-    var xSpan = $("<div>");
-    xSpan.html("X");
-    xSpan.on("click", function(){
-      $("#" + books[i].id).remove();
-    });
-     var editSpan = $("<div>");
-    editSpan.html("Edit");
-    
-    editSpan.on("click", function(){
-      if ($(this).html() === "Edit") {
-        var input1 = $("<input>");
-      input1.attr("type", "text");
-      input1.val($("#" + books[i].id + " div:nth(0)").html());
-      var input2 = $("<input>");
-      input2.attr("type", "text");
-      input2.val($("#" + books[i].id + " div:nth(1)").html());
-      var input3 = $("<input>");
-      input3.attr("type", "text");
-      input3.val($("#" + books[i].id + " div:nth(2)").html());
-      
-      $("#" + books[i].id + " div:nth(0)").html(input1);
-      $("#" + books[i].id + " div:nth(1)").html(input2);
-      $("#" + newBook.id + " div:nth(2)").html(input3);
-      $(this).html("Save");
-      } else {
-        var bookName = $("#" + books[i].id + " div:nth(0) input").val();
-        var authorName = $("#" + books[i].id + " div:nth(1) input").val();
-        var score = $("#" + books[i].id + " div:nth(2) input").val();
-        $("#" + books[i].id + " div:nth(0)").html(bookName);
-        $("#" + books[i].id + " div:nth(1)").html(authorName);
-        $("#" + books[i].id + " div:nth(2)").html(score);
-        $(this).html("Edit");
-      }
-  }
-}
-}
 
-
-console.log("Welcome");
-$.get("/books", function(data){
-  addAllBooks(data);
-});
 
 
 
