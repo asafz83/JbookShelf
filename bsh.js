@@ -45,12 +45,13 @@ var addAllBooks = function(books) {
       }
   }
 }
+}
 
 
 console.log("Welcome");
 $.get("/books", function(data){
   addAllBooks(data);
-})
+});
 
 
 
