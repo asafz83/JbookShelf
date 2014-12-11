@@ -24,6 +24,9 @@ $(document).ready(function(){
     });
      var editSpan = $("<div>");
     editSpan.html("Edit");
+    $.post("/books/new", newBook, function(){
+      alert("save successfully");
+    });
     editSpan.on("click", function(){
       if ($(this).html() === "Edit") {
         var input1 = $("<input>");
