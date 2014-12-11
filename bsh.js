@@ -1,6 +1,10 @@
 var books = [];
 
 
+$.get("/books", function(data){
+  console.log(data);
+});
+
 
 
 
