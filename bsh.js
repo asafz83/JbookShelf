@@ -8,7 +8,7 @@ $.get("/books", function(data){
   }
 });
 
-function addBookToDom(newBook){
+function addBookToDom(newBook) {
     var newLi = $("<li>");
     newLi.attr("id", newBook.id);
     var nameSpan = $("<div>");
@@ -49,6 +49,7 @@ function addBookToDom(newBook){
         $("#" + newBook.id + " div:nth(2)").html(score);
         $(this).html("Edit");
       }
+});
 }
 
 
