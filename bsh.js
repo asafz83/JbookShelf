@@ -21,7 +21,13 @@ function addBookToDom(newBook) {
     xSpan.html("X");
     xSpan.on("click", function(){
       $("#" + newBook.id).remove();
-      
+      $.ajax({
+        type: "DELETE",
+        url: "/books/remove/" + newBook.id,
+        success: function(){
+          alert("Book was successfully deleted!");
+        }
+      });
       //todo send DELETE with newBook.id as url parameter to the url /books/remove/<put newBook.id here>
     });
      var editSpan = $("<div>");
@@ -56,7 +62,15 @@ function addBookToDom(newBook) {
           bookName: bookName,
           authorName: authorName,
           score: score
+        };
+        $.ajax({
+        type: "PUT",
+        url: "/books/update/" + newBook.id,
+        data: bookToSendInAjax,
+        success: function(){
+          alert("Book was successfully updated!");
         }
+      });
         //todo send POST with newBook.id as url parameter and the updated Book as data object to the url /books/udpate/<put newBook.id here>
       }
 });
